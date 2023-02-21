@@ -4,44 +4,63 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 // var generateCriteria = document.querySelectorAll("#input[name=checkbox]");
-var generateCriteria = document.querySelector("#criteria");
-var passwordLength = document.querySelector("#passlen");
+// var generateCriteria = document.querySelector("#criteria");
+// var passwordLength = document.querySelector("#passlen");
 
-
+const criteria = ["Lowercase", "Uppercase", "Numbers", "Special Characters"];
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+var checkboxes = document.getElementById("criteria")
 
+
+  criteria.forEach((checkbox) => {
+    console.log(checkbox);
+
+    if (criteria[] = ischecked) {
+      console.log("yes");
+    }
+  });
+  
+
+
+
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
+  // passwordText.value = password;
 }
+
+function writeCriteria() {
+  
+
+  criteria.forEach((element) => {
+
+    const id = `element: ${element}`;
+
+    
+
+  const label = document.createElement('label');
+  label.setAttribute('for', id);
+
+  var checkbox = document.createElement('input');
+  checkbox.type = "checkbox";
+  checkbox.name = "name";
+  checkbox.value = element;
+  checkbox.id = id;
+
+  label.appendChild(checkbox);
+  label.appendChild(document.createTextNode(element));
+
+  document.querySelector("#generate")
+  
+
+  document.querySelector("#criteria").appendChild(label);
+
+ });
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writeCriteria);
 
-generateCriteria.addEventListener("click", function () {
-var checkbox = document.createElement('input');
-checkbox.type = "checkbox";
-checkbox.name = "name";
-checkbox.value = "value";
-checkbox.id = "id";
-
-var label = document.createElement('label')
-label.htmlFor = "id";
-label.appendChild(document.createTextNode('text for label after checkbox'));
-
-container.appendChild(checkbox);
-container.appendChild(label);
-
-});
-
-// generateCriteria.forEach(function(checkbox) {
-//   checkbox.addEventListener('change', function() {
-//     var checkedBoxes = [];
-
-//     checkedBoxes = Array.from(generateCriteria).filter(i => i.checked).map(i => i.value);
-
-//     console.log(checkedBoxes);
-//   });
-// });
