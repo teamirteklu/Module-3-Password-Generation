@@ -12,18 +12,35 @@ const criteria = ["Lowercase", "Uppercase", "Numbers", "Special Characters"];
 
 function writePassword() {
 var checkboxes = document.getElementsByName("criteria");
-
-console.log(checkboxes);
-
-if(checkboxes[0].checked == true) {
-  
-} 
+var passwordLength = parseInt(document.getElementsByName("passlen")[0].value);
 
 
+var password = "";
+var randomChar = "";
 
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-  // passwordText.value = password;
+if(checkboxes[0].checked == true){
+  randomChar += "abcdefghijklmnopqrstuvwxyz";
+}
+
+if(checkboxes[1].checked == true){
+  randomChar += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+}
+
+if(checkboxes[2].checked == true){
+  randomChar += "1234567890";
+}
+
+if(checkboxes[3].checked == true){
+  randomChar += " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~\ ";
+}
+
+for (var i = 0; i <= (passwordLength - 1); i++) {
+  var randomNum = Math.floor(Math.random() * randomChar.length);
+  password += randomChar.substring(randomNum, randomNum +1);
+ }
+
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 }
 
 function writeCriteria() {
@@ -57,7 +74,7 @@ function writeCriteria() {
 
   passLength.type = "number";
   passLength.name = "passlen"
-  passLength.value = "passwordLength";
+  passLength.value = "";
   passLength.id = "passlen";
   passLength.min = "8";
   passLength.max = "128";
@@ -75,8 +92,6 @@ function writeCriteria() {
   button.id = "button";
 
   document.querySelector("#button").appendChild(button);
-
-
 }
 
 
